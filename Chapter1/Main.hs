@@ -1,9 +1,11 @@
 module Main where
 
-salutation = "Hello"
+makeGreeting salutation person =
+  salutation <> " " <> person
 
-person = "George"
+greetPerson = makeGreeting "Hello"
 
-greeting = salutation <> " " <> person
+enthusiasticGreeting salutation =
+  makeGreeting (salutation <> "!")
 
-main = print greeting
+main = print "no salutation to show yet"
