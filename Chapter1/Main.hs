@@ -1,32 +1,23 @@
 module Main where
 
-makeGreeting salutation person =
-  let messageWithTrailingSpace = salutation <> " "
-   in messageWithTrailingSpace <> person
+printSmallNumber num =
+  let msg =
+        if num < 3
+          then "thats a small number"
+          else
+            if num < 10
+              then "the number is a medium number"
+              else "the number is a big number"
+   in print msg
 
-extendedGreeting person =
-  let joinWithNewlines a b = a <> "\n" <> b
-      helloAndGoodbye hello goodbye =
-        let hello' = makeGreeting hello person
-            goodbye' = makeGreeting goodbye person
-         in joinWithNewlines hello' goodbye'
-   in helloAndGoodbye "Hello" "Goodbye"
-
-letWhereGreeting name place =
-  let salutation = "Hello" <> name
-      meetingInfo = location "Tuesday"
-   in salutation <> " " <> meetingInfo
+guardSize num
+  | num > 0 =
+      let size = "positive"
+       in exclaim size
+  | num < 3 = exclaim "small"
+  | num < 100 = exclaim "medium"
+  | otherwise = exclaim "large"
   where
-    location day = "we met at " <> place <> " on a " <> day
+    exclaim message = "that's a " <> message <> " number!"
 
-extendedGreeting' person =
-  helloAndGoodbye "Hello" "Goodbye"
-  where
-    helloAndGoodbye hello goodbye =
-      joinWithNewlines hello' goodbye'
-      where
-        hello' = makeGreeting hello person
-        goodbye' = makeGreeting goodbye person
-    joinWithNewlines a b = a <> "\n" <> b
-
-main = print $ makeGreeting "Hello" "George"
+main = printSmallNumber 3
