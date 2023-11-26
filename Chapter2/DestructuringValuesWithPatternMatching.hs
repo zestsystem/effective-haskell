@@ -20,3 +20,8 @@ matchTuple' ("hello", "world") = "Hello there, you great big world"
 matchTuple' ("hello", name) = "Oh hi there, " <> name
 matchTuple' (salutation, "George") = "Oh! " <> salutation <> " George"
 matchTuple' n = show n
+
+partialFunction 0 = "I only work for 0"
+partialFunction impossibleValue =
+  error $
+    "I only work with 0 but I was called with " <> show impossibleValue
