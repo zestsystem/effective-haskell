@@ -8,7 +8,12 @@ reverseWithFoldr lst =
   foldr (\x f acc -> f (x : acc)) id lst []
 
 -- Zipping List
-zipWithNoListComprehension f (x : xs) (y : ys) = f x y : zipWithNoListComprehension f xs ys
-zipWithNoListComprehension _ _ _ = []
+zipWithNoListComprehension f as bs
+  | (a : as') <- as, (b : bs') <- bs = f a b : zipWithNoListComprehension f as' bs'
 
-zipWithListComprehension f xs ys = [f x y | (x, y) <- zip xs ys]
+zipWithFoldl f as bs = reverse $ foldl applyFunction [] zipped
+  where
+    zipped = zip as bs
+    applyFunction accumulator (a, b) = f a b : accumulator
+
+zipWithListComprehension f as bs = [f a b | (a, b) <- zip as bs]
