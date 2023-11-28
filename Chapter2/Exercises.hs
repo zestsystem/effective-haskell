@@ -1,11 +1,9 @@
 module Exercises where
 
 -- Reversing a List with Folds
-reverseWithFoldl lst =
-  foldl (\x acc -> acc : x) [] lst
+reverseWithFoldl lst = foldl (flip (:)) []
 
-reverseWithFoldr lst =
-  foldr (\x f acc -> f (x : acc)) id lst []
+reverseWithFoldr lst = foldr (\x acc -> acc <> [x]) []
 
 -- Zipping List
 zipWithNoListComprehension f as bs
