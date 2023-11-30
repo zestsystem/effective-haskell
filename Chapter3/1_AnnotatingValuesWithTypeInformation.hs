@@ -14,9 +14,7 @@ four :: Int
 four = 4
 
 calculateTotalCost basePrice =
-    let
-        priceWithServiceFee :: Int
-        priceWithServiceFee = basePrice + 1
-        customaryTip = 7 :: Int
-     in
-        priceWithServiceFee + customaryTip
+  let priceWithServiceFee :: Int
+      priceWithServiceFee = basePrice + 1
+      customaryTip = 7 :: Int
+   in priceWithServiceFee + customaryTip
