@@ -8,3 +8,22 @@ module Chapter3.Exercises where
 --         That’s one of the drawbacks of this technique.
 --         When you allow the compiler to infer the type of undefined, you may find that you’re getting a false sense of security when your program compiles.
 --         It’s useful frequently enough that you shouldn’t necessarily avoid it altogether, but beware of the drawbacks.
+
+-- Understanding Function By Their Type
+-- 1. Data.Tuple.swap :: (a,b) -> (b,a)
+swap :: (a, b) -> (b, a)
+swap (a, b) = (b, a)
+
+swap' :: (a, b) -> (b, a)
+swap' input =
+  let a = fst input
+      b = snd input
+   in (b, a)
+
+-- 2 . concat :: [[a]] -> [a]
+concat :: [[a]] -> [a]
+concat = foldr (<>) []
+
+-- 3. id :: a -> a
+id :: a -> a
+id a = a
